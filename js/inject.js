@@ -228,7 +228,8 @@
 				'unit-gex',
 				'maptradewarning',
 				'guildmemberstat',
-				'quests'
+				'quests',
+				'achievements'
 			];
 
 			// load scripts (one after the other)

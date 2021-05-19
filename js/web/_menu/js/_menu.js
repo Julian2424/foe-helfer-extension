@@ -51,7 +51,8 @@ let _menu = {
 		'gildfight',
 		'investment',
 		'alerts',
-		'guildmemberstat'
+		'guildmemberstat',
+		'achievements'
 		// 'unitsGex',
 	],
 
@@ -908,5 +909,28 @@ let _menu = {
 		btn.append(btn_sp);
 
 		return btn;
+	},
+	
+	
+	/**
+	 * achievements
+	 */
+	achievements_Btn: () => {
+
+		let btn_achievements = $('<div />').attr({ 'id': 'achievements-Btn', 'data-slug': 'achievements' }).addClass('hud-btn');
+
+		// Tooltip einbinden
+		btn_achievements = _menu.toolTipp(btn_achievements, i18n('Menu.Info.Title'), i18n('Menu.Info.Desc'));
+
+		let btn_Ach = $('<span />');
+
+		btn_Ach.on('click', function () {
+			Achievements.Show();
+		});
+
+		btn_achievements.append(btn_Ach);
+
+
+		return btn_achievements;
 	}
 };
