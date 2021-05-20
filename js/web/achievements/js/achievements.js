@@ -11,18 +11,46 @@
  * **************************************************************************************
  */
 
-/**
- * Project  foe-chrome
- * Date     2020-03-27
- * License  MIT
- *
- * @author  Tomas Vorobjov <contact@tomasvorobjov.com>
- *
- */
 
+
+ FoEproxy.addHandler('AchievementsService', 'getOverview', async (data, postData) => {
+	
+    Achievements.Show();
+	console.log("Proxy");
+});
 let Achievements={
-	Show:()=>{
-		
-console.log("Hi");
-	}
+	 /**
+	 * Build HUD
+	 */
+	Show: () => {
+
+        Achievements.Box();
+    },
+
+    /**
+     * Erzeugt die Box wenn noch nicht im DOM
+     *
+     */
+    Box: () => {
+
+        // Wenn die Box noch nicht da ist, neu erzeugen und in den DOM packen
+        if ($('#AchievementsInfo').length === 0) {
+
+            HTML.Box({
+                id: 'AchievementsInfo',
+                title: i18n('Boxes.Achievements.Title'),
+                auto_close: true,
+                dragdrop: true,
+                resize: true,
+                minimize: true
+            });
+       
+            // CSS in den DOM prügeln
+            HTML.AddCssFile('achievements');
+             $('#AchievementsBody').html(`${i18n('Boxes.mapTradeWarning.Text')}`);
+
+        } else {
+            return HTML.CloseOpenBox('AchievementsInfo');
+        }
+    },
 }
